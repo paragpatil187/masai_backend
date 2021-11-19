@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.get("/", ( req,res)=>{
     
-    res.send=("Welcome to Home page");
+    res.send("Welcome to Home page");
     
 
 });
