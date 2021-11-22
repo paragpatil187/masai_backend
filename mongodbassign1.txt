@@ -1,0 +1,639 @@
+Microsoft Windows [Version 10.0.22000.318]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\parag>mongo
+MongoDB shell version v5.0.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("61d1103b-bc66-493a-a724-51ccbea2fe86") }
+MongoDB server version: 5.0.4
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2021-11-22T15:21:35.708+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show databases
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+users   0.000GB
+> use users
+switched to db users
+> show collections
+user
+> db.user.insert({":"last_name":"patil",age:25})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:19
+> db.user.insert({"last_name":"patil",age:25})
+WriteResult({ "nInserted" : 1 })
+> db.user.help()
+DBCollection help
+        db.user.find().help() - show DBCursor help
+        db.user.bulkWrite( operations, <optional params> ) - bulk execute write operations, optional parameters are: w, wtimeout, j
+        db.user.count( query = {}, <optional params> ) - count the number of documents that matches the query, optional parameters are: limit, skip, hint, maxTimeMS
+        db.user.countDocuments( query = {}, <optional params> ) - count the number of documents that matches the query, optional parameters are: limit, skip, hint, maxTimeMS
+        db.user.estimatedDocumentCount( <optional params> ) - estimate the document count using collection metadata, optional parameters are: maxTimeMS
+        db.user.convertToCapped(maxBytes) - calls {convertToCapped:'user', size:maxBytes}} command
+        db.user.createIndex(keypattern[,options])
+        db.user.createIndexes([keypatterns], <options>)
+        db.user.dataSize()
+        db.user.deleteOne( filter, <optional params> ) - delete first matching document, optional parameters are: w, wtimeout, j
+        db.user.deleteMany( filter, <optional params> ) - delete all matching documents, optional parameters are: w, wtimeout, j
+        db.user.distinct( key, query, <optional params> ) - e.g. db.user.distinct( 'x' ), optional parameters are: maxTimeMS
+        db.user.drop() drop the collection
+        db.user.dropIndex(index) - e.g. db.user.dropIndex( "indexName" ) or db.user.dropIndex( { "indexKey" : 1 } )
+        db.user.hideIndex(index) - e.g. db.user.hideIndex( "indexName" ) or db.user.hideIndex( { "indexKey" : 1 } )
+        db.user.unhideIndex(index) - e.g. db.user.unhideIndex( "indexName" ) or db.user.unhideIndex( { "indexKey" : 1 } )
+        db.user.dropIndexes()
+        db.user.explain().help() - show explain help
+        db.user.reIndex()
+        db.user.find([query],[fields]) - query is an optional query filter. fields is optional set of fields to return.
+                                                      e.g. db.user.find( {x:77} , {name:1, x:1} )
+        db.user.find(...).count()
+        db.user.find(...).limit(n)
+        db.user.find(...).skip(n)
+        db.user.find(...).sort(...)
+        db.user.findOne([query], [fields], [options], [readConcern])
+        db.user.findOneAndDelete( filter, <optional params> ) - delete first matching document, optional parameters are: projection, sort, maxTimeMS
+        db.user.findOneAndReplace( filter, replacement, <optional params> ) - replace first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
+        db.user.findOneAndUpdate( filter, <update object or pipeline>, <optional params> ) - update first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
+        db.user.getDB() get DB object associated with collection
+        db.user.getPlanCache() get query plan cache associated with collection
+        db.user.getIndexes()
+        db.user.insert(obj)
+        db.user.insertOne( obj, <optional params> ) - insert a document, optional parameters are: w, wtimeout, j
+        db.user.insertMany( [objects], <optional params> ) - insert multiple documents, optional parameters are: w, wtimeout, j
+        db.user.mapReduce( mapFunction , reduceFunction , <optional params> )
+        db.user.aggregate( [pipeline], <optional params> ) - performs an aggregation on a collection; returns a cursor
+        db.user.remove(query)
+        db.user.replaceOne( filter, replacement, <optional params> ) - replace the first matching document, optional parameters are: upsert, w, wtimeout, j
+        db.user.renameCollection( newName , <dropTarget> ) renames the collection.
+        db.user.runCommand( name , <options> ) runs a db command with the given name where the first param is the collection name
+        db.user.save(obj)
+        db.user.stats({scale: N, indexDetails: true/false, indexDetailsKey: <index key>, indexDetailsName: <index name>})
+        db.user.storageSize() - includes free space allocated to this collection
+        db.user.totalIndexSize() - size in bytes of all the indexes
+        db.user.totalSize() - storage allocated for all data and indexes
+        db.user.update( query, <update object or pipeline>[, upsert_bool, multi_bool] ) - instead of two flags, you can pass an object with fields: upsert, multi, hint, let
+        db.user.updateOne( filter, <update object or pipeline>, <optional params> ) - update the first matching document, optional parameters are: upsert, w, wtimeout, j, hint, let
+        db.user.updateMany( filter, <update object or pipeline>, <optional params> ) - update all matching documents, optional parameters are: upsert, w, wtimeout, j, hint, let
+        db.user.validate( <full> ) - SLOW
+        db.user.getShardVersion() - only for use with sharding
+        db.user.getShardDistribution() - prints statistics about data distribution in the cluster
+        db.user.getSplitKeysForChunks( <maxChunkSize> ) - calculates split points over all chunks and returns splitter function
+        db.user.getWriteConcern() - returns the write concern used for any operations on this collection, inherited from server/db if set
+        db.user.setWriteConcern( <write concern doc> ) - sets the write concern for writes to the collection
+        db.user.unsetWriteConcern( <write concern doc> ) - unsets the write concern for writes to the collection
+        db.user.latencyStats() - display operation latency histograms for this collection
+> db.user.drop
+function(options = {}) {
+    const cmdObj = Object.assign({drop: this.getName()}, options);
+    ret = this._db.runCommand(cmdObj);
+    if (!ret.ok) {
+        if (ret.errmsg == "ns not found")
+            return false;
+        throw _getErrorWithCode(ret, "drop failed: " + tojson(ret));
+    }
+    return true;
+}
+> db.user.drop()
+true
+> db.users.help()
+DBCollection help
+        db.users.find().help() - show DBCursor help
+        db.users.bulkWrite( operations, <optional params> ) - bulk execute write operations, optional parameters are: w, wtimeout, j
+        db.users.count( query = {}, <optional params> ) - count the number of documents that matches the query, optional parameters are: limit, skip, hint, maxTimeMS
+        db.users.countDocuments( query = {}, <optional params> ) - count the number of documents that matches the query, optional parameters are: limit, skip, hint, maxTimeMS
+        db.users.estimatedDocumentCount( <optional params> ) - estimate the document count using collection metadata, optional parameters are: maxTimeMS
+        db.users.convertToCapped(maxBytes) - calls {convertToCapped:'users', size:maxBytes}} command
+        db.users.createIndex(keypattern[,options])
+        db.users.createIndexes([keypatterns], <options>)
+        db.users.dataSize()
+        db.users.deleteOne( filter, <optional params> ) - delete first matching document, optional parameters are: w, wtimeout, j
+        db.users.deleteMany( filter, <optional params> ) - delete all matching documents, optional parameters are: w, wtimeout, j
+        db.users.distinct( key, query, <optional params> ) - e.g. db.users.distinct( 'x' ), optional parameters are: maxTimeMS
+        db.users.drop() drop the collection
+        db.users.dropIndex(index) - e.g. db.users.dropIndex( "indexName" ) or db.users.dropIndex( { "indexKey" : 1 } )
+        db.users.hideIndex(index) - e.g. db.users.hideIndex( "indexName" ) or db.users.hideIndex( { "indexKey" : 1 } )
+        db.users.unhideIndex(index) - e.g. db.users.unhideIndex( "indexName" ) or db.users.unhideIndex( { "indexKey" : 1 } )
+        db.users.dropIndexes()
+        db.users.explain().help() - show explain help
+        db.users.reIndex()
+        db.users.find([query],[fields]) - query is an optional query filter. fields is optional set of fields to return.
+                                                      e.g. db.users.find( {x:77} , {name:1, x:1} )
+        db.users.find(...).count()
+        db.users.find(...).limit(n)
+        db.users.find(...).skip(n)
+        db.users.find(...).sort(...)
+        db.users.findOne([query], [fields], [options], [readConcern])
+        db.users.findOneAndDelete( filter, <optional params> ) - delete first matching document, optional parameters are: projection, sort, maxTimeMS
+        db.users.findOneAndReplace( filter, replacement, <optional params> ) - replace first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
+        db.users.findOneAndUpdate( filter, <update object or pipeline>, <optional params> ) - update first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
+        db.users.getDB() get DB object associated with collection
+        db.users.getPlanCache() get query plan cache associated with collection
+        db.users.getIndexes()
+        db.users.insert(obj)
+        db.users.insertOne( obj, <optional params> ) - insert a document, optional parameters are: w, wtimeout, j
+        db.users.insertMany( [objects], <optional params> ) - insert multiple documents, optional parameters are: w, wtimeout, j
+        db.users.mapReduce( mapFunction , reduceFunction , <optional params> )
+        db.users.aggregate( [pipeline], <optional params> ) - performs an aggregation on a collection; returns a cursor
+        db.users.remove(query)
+        db.users.replaceOne( filter, replacement, <optional params> ) - replace the first matching document, optional parameters are: upsert, w, wtimeout, j
+        db.users.renameCollection( newName , <dropTarget> ) renames the collection.
+        db.users.runCommand( name , <options> ) runs a db command with the given name where the first param is the collection name
+        db.users.save(obj)
+        db.users.stats({scale: N, indexDetails: true/false, indexDetailsKey: <index key>, indexDetailsName: <index name>})
+        db.users.storageSize() - includes free space allocated to this collection
+        db.users.totalIndexSize() - size in bytes of all the indexes
+        db.users.totalSize() - storage allocated for all data and indexes
+        db.users.update( query, <update object or pipeline>[, upsert_bool, multi_bool] ) - instead of two flags, you can pass an object with fields: upsert, multi, hint, let
+        db.users.updateOne( filter, <update object or pipeline>, <optional params> ) - update the first matching document, optional parameters are: upsert, w, wtimeout, j, hint, let
+        db.users.updateMany( filter, <update object or pipeline>, <optional params> ) - update all matching documents, optional parameters are: upsert, w, wtimeout, j, hint, let
+        db.users.validate( <full> ) - SLOW
+        db.users.getShardVersion() - only for use with sharding
+        db.users.getShardDistribution() - prints statistics about data distribution in the cluster
+        db.users.getSplitKeysForChunks( <maxChunkSize> ) - calculates split points over all chunks and returns splitter function
+        db.users.getWriteConcern() - returns the write concern used for any operations on this collection, inherited from server/db if set
+        db.users.setWriteConcern( <write concern doc> ) - sets the write concern for writes to the collection
+        db.users.unsetWriteConcern( <write concern doc> ) - unsets the write concern for writes to the collection
+        db.users.latencyStats() - display operation latency histograms for this collection
+> db.dropDatabase()
+{ "ok" : 1 }
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> mongo
+uncaught exception: ReferenceError: mongo is not defined :
+@(shell):1:1
+> db.use user
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:7
+> use user
+switched to db user
+> use users
+switched to db users
+> db.users.find()
+> db.user.find()
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b11"), "first_name" : "Andromache", "last_name" : "McMillam", "email" : "amcmillam0@home.pl", "gender" : "Male", "ip_address" : "62.111.181.121", "age" : "4519627966" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b12"), "first_name" : "Charil", "last_name" : "Elford", "email" : "celford1@addthis.com", "gender" : "Male", "ip_address" : "192.112.229.113", "age" : "1922387665" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b13"), "first_name" : "Say", "last_name" : "Berford", "email" : "sberford2@blinklist.com", "gender" : "Genderqueer", "ip_address" : "145.213.18.109", "age" : "8499636292" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b14"), "first_name" : "Heda", "last_name" : "Grace", "email" : "hgrace3@chron.com", "gender" : "Male", "ip_address" : "223.243.193.150", "age" : "0767405757" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b15"), "first_name" : "Rodney", "last_name" : "Goadby", "email" : "rgoadby4@livejournal.com", "gender" : "Female", "ip_address" : "62.184.127.191", "age" : "9609970281" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b16"), "first_name" : "Tate", "last_name" : "Tweedell", "email" : "ttweedell5@yale.edu", "gender" : "Genderqueer", "ip_address" : "28.115.141.148", "age" : "1218750340" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b17"), "first_name" : "Sabrina", "last_name" : "Dafter", "email" : "sdafter6@hc360.com", "gender" : "Female", "ip_address" : "158.243.191.129", "age" : "4676710585" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b18"), "first_name" : "Sanders", "last_name" : "Hennemann", "email" : "shennemann7@newsvine.com", "gender" : "Female", "ip_address" : "69.105.252.113", "age" : "4537657073" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b19"), "first_name" : "Alex", "last_name" : "Ebdin", "email" : "aebdin8@sohu.com", "gender" : "Male", "ip_address" : "216.93.3.184", "age" : "4847461762" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b1a"), "first_name" : "Yoshiko", "last_name" : "Eastman", "email" : "yeastman9@cbsnews.com", "gender" : "Male", "ip_address" : "184.127.172.26", "age" : "6650190101" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b1b"), "first_name" : "Wylma", "last_name" : "Bickerstaffe", "email" : "wbickerstaffea@altervista.org", "gender" : "Male", "ip_address" : "150.197.5.99", "age" : "2346748870" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b1c"), "first_name" : "Fedora", "last_name" : "Mandrey", "email" : "fmandreyb@cdc.gov", "gender" : "Agender", "ip_address" : "244.248.122.126", "age" : "4998583182" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b1d"), "first_name" : "Brinn", "last_name" : "Busse", "email" : "bbussec@devhub.com", "gender" : "Polygender", "ip_address" : "28.108.237.16", "age" : "0290088631" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b1e"), "first_name" : "Darice", "last_name" : "Guise", "email" : "dguised@phoca.cz", "gender" : "Polygender", "ip_address" : "227.41.19.90", "age" : "3026690732" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b1f"), "first_name" : "Kaile", "last_name" : "Quidenham", "email" : "kquidenhame@apple.com", "gender" : "Non-binary", "ip_address" : "149.199.112.84", "age" : "3686334801" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b20"), "first_name" : "Esdras", "last_name" : "Josling", "email" : "ejoslingf@biblegateway.com", "gender" : "Male", "ip_address" : "43.170.171.150", "age" : "9728585454" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b21"), "first_name" : "Catherine", "last_name" : "Mead", "email" : "cmeadg@sitemeter.com", "gender" : "Polygender", "ip_address" : "9.87.167.162", "age" : "1165400480" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b22"), "first_name" : "Vassily", "last_name" : "Lording", "email" : "vlordingh@google.co.jp", "gender" : "Polygender", "ip_address" : "83.223.35.251", "age" : "1499427824" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b23"), "first_name" : "Dore", "last_name" : "Glenn", "email" : "dglenni@xing.com", "gender" : "Non-binary", "ip_address" : "84.27.218.29", "age" : "7519247414" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b24"), "first_name" : "Griff", "last_name" : "Aitchinson", "email" : "gaitchinsonj@technorati.com", "gender" : "Genderfluid", "ip_address" : "236.199.179.4", "age" : "5800434212" }
+Type "it" for more
+> db.user.find().pretty()
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b11"),
+        "first_name" : "Andromache",
+        "last_name" : "McMillam",
+        "email" : "amcmillam0@home.pl",
+        "gender" : "Male",
+        "ip_address" : "62.111.181.121",
+        "age" : "4519627966"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b12"),
+        "first_name" : "Charil",
+        "last_name" : "Elford",
+        "email" : "celford1@addthis.com",
+        "gender" : "Male",
+        "ip_address" : "192.112.229.113",
+        "age" : "1922387665"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b13"),
+        "first_name" : "Say",
+        "last_name" : "Berford",
+        "email" : "sberford2@blinklist.com",
+        "gender" : "Genderqueer",
+        "ip_address" : "145.213.18.109",
+        "age" : "8499636292"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b14"),
+        "first_name" : "Heda",
+        "last_name" : "Grace",
+        "email" : "hgrace3@chron.com",
+        "gender" : "Male",
+        "ip_address" : "223.243.193.150",
+        "age" : "0767405757"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b15"),
+        "first_name" : "Rodney",
+        "last_name" : "Goadby",
+        "email" : "rgoadby4@livejournal.com",
+        "gender" : "Female",
+        "ip_address" : "62.184.127.191",
+        "age" : "9609970281"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b16"),
+        "first_name" : "Tate",
+        "last_name" : "Tweedell",
+        "email" : "ttweedell5@yale.edu",
+        "gender" : "Genderqueer",
+        "ip_address" : "28.115.141.148",
+        "age" : "1218750340"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b17"),
+        "first_name" : "Sabrina",
+        "last_name" : "Dafter",
+        "email" : "sdafter6@hc360.com",
+        "gender" : "Female",
+        "ip_address" : "158.243.191.129",
+        "age" : "4676710585"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b18"),
+        "first_name" : "Sanders",
+        "last_name" : "Hennemann",
+        "email" : "shennemann7@newsvine.com",
+        "gender" : "Female",
+        "ip_address" : "69.105.252.113",
+        "age" : "4537657073"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b19"),
+        "first_name" : "Alex",
+        "last_name" : "Ebdin",
+        "email" : "aebdin8@sohu.com",
+        "gender" : "Male",
+        "ip_address" : "216.93.3.184",
+        "age" : "4847461762"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b1a"),
+        "first_name" : "Yoshiko",
+        "last_name" : "Eastman",
+        "email" : "yeastman9@cbsnews.com",
+        "gender" : "Male",
+        "ip_address" : "184.127.172.26",
+        "age" : "6650190101"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b1b"),
+        "first_name" : "Wylma",
+        "last_name" : "Bickerstaffe",
+        "email" : "wbickerstaffea@altervista.org",
+        "gender" : "Male",
+        "ip_address" : "150.197.5.99",
+        "age" : "2346748870"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b1c"),
+        "first_name" : "Fedora",
+        "last_name" : "Mandrey",
+        "email" : "fmandreyb@cdc.gov",
+        "gender" : "Agender",
+        "ip_address" : "244.248.122.126",
+        "age" : "4998583182"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b1d"),
+        "first_name" : "Brinn",
+        "last_name" : "Busse",
+        "email" : "bbussec@devhub.com",
+        "gender" : "Polygender",
+        "ip_address" : "28.108.237.16",
+        "age" : "0290088631"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b1e"),
+        "first_name" : "Darice",
+        "last_name" : "Guise",
+        "email" : "dguised@phoca.cz",
+        "gender" : "Polygender",
+        "ip_address" : "227.41.19.90",
+        "age" : "3026690732"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b1f"),
+        "first_name" : "Kaile",
+        "last_name" : "Quidenham",
+        "email" : "kquidenhame@apple.com",
+        "gender" : "Non-binary",
+        "ip_address" : "149.199.112.84",
+        "age" : "3686334801"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b20"),
+        "first_name" : "Esdras",
+        "last_name" : "Josling",
+        "email" : "ejoslingf@biblegateway.com",
+        "gender" : "Male",
+        "ip_address" : "43.170.171.150",
+        "age" : "9728585454"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b21"),
+        "first_name" : "Catherine",
+        "last_name" : "Mead",
+        "email" : "cmeadg@sitemeter.com",
+        "gender" : "Polygender",
+        "ip_address" : "9.87.167.162",
+        "age" : "1165400480"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b22"),
+        "first_name" : "Vassily",
+        "last_name" : "Lording",
+        "email" : "vlordingh@google.co.jp",
+        "gender" : "Polygender",
+        "ip_address" : "83.223.35.251",
+        "age" : "1499427824"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b23"),
+        "first_name" : "Dore",
+        "last_name" : "Glenn",
+        "email" : "dglenni@xing.com",
+        "gender" : "Non-binary",
+        "ip_address" : "84.27.218.29",
+        "age" : "7519247414"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b24"),
+        "first_name" : "Griff",
+        "last_name" : "Aitchinson",
+        "email" : "gaitchinsonj@technorati.com",
+        "gender" : "Genderfluid",
+        "ip_address" : "236.199.179.4",
+        "age" : "5800434212"
+}
+Type "it" for more
+> db.user.findOne()
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b11"),
+        "first_name" : "Andromache",
+        "last_name" : "McMillam",
+        "email" : "amcmillam0@home.pl",
+        "gender" : "Male",
+        "ip_address" : "62.111.181.121",
+        "age" : "4519627966"
+}
+> db.user.find({gender:"Male"}).pretty()
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b11"),
+        "first_name" : "Andromache",
+        "last_name" : "McMillam",
+        "email" : "amcmillam0@home.pl",
+        "gender" : "Male",
+        "ip_address" : "62.111.181.121",
+        "age" : "4519627966"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b12"),
+        "first_name" : "Charil",
+        "last_name" : "Elford",
+        "email" : "celford1@addthis.com",
+        "gender" : "Male",
+        "ip_address" : "192.112.229.113",
+        "age" : "1922387665"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b14"),
+        "first_name" : "Heda",
+        "last_name" : "Grace",
+        "email" : "hgrace3@chron.com",
+        "gender" : "Male",
+        "ip_address" : "223.243.193.150",
+        "age" : "0767405757"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b19"),
+        "first_name" : "Alex",
+        "last_name" : "Ebdin",
+        "email" : "aebdin8@sohu.com",
+        "gender" : "Male",
+        "ip_address" : "216.93.3.184",
+        "age" : "4847461762"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b1a"),
+        "first_name" : "Yoshiko",
+        "last_name" : "Eastman",
+        "email" : "yeastman9@cbsnews.com",
+        "gender" : "Male",
+        "ip_address" : "184.127.172.26",
+        "age" : "6650190101"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b1b"),
+        "first_name" : "Wylma",
+        "last_name" : "Bickerstaffe",
+        "email" : "wbickerstaffea@altervista.org",
+        "gender" : "Male",
+        "ip_address" : "150.197.5.99",
+        "age" : "2346748870"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b20"),
+        "first_name" : "Esdras",
+        "last_name" : "Josling",
+        "email" : "ejoslingf@biblegateway.com",
+        "gender" : "Male",
+        "ip_address" : "43.170.171.150",
+        "age" : "9728585454"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b27"),
+        "first_name" : "Celene",
+        "last_name" : "Eccleston",
+        "email" : "cecclestonm@discuz.net",
+        "gender" : "Male",
+        "ip_address" : "61.206.39.202",
+        "age" : "6512406176"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b2b"),
+        "first_name" : "Loreen",
+        "last_name" : "Paley",
+        "email" : "lpaleyq@redcross.org",
+        "gender" : "Male",
+        "ip_address" : "230.197.172.40",
+        "age" : "2570465461"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b2c"),
+        "first_name" : "Mozes",
+        "last_name" : "Durno",
+        "email" : "mdurnor@google.com",
+        "gender" : "Male",
+        "ip_address" : "170.163.95.122",
+        "age" : "5870848121"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b2d"),
+        "first_name" : "Clementina",
+        "last_name" : "Ivanuschka",
+        "email" : "civanuschkas@utexas.edu",
+        "gender" : "Male",
+        "ip_address" : "113.115.209.50",
+        "age" : "9717483221"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b34"),
+        "first_name" : "Belia",
+        "last_name" : "MacKaig",
+        "email" : "bmackaigz@networksolutions.com",
+        "gender" : "Male",
+        "ip_address" : "111.39.253.65",
+        "age" : "2056259419"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b37"),
+        "first_name" : "Nickey",
+        "last_name" : "Dodridge",
+        "email" : "ndodridge12@deviantart.com",
+        "gender" : "Male",
+        "ip_address" : "18.190.64.133",
+        "age" : "8993167931"
+}
+{
+        "_id" : ObjectId("619bdf0f3e2585f4288b5b42"),
+        "first_name" : "Leisha",
+        "last_name" : "Bentje",
+        "email" : "lbentje1d@goo.gl",
+        "gender" : "Male",
+        "ip_address" : "242.26.54.116",
+        "age" : "9082899760"
+}
+> db.user.update({ "first_name":"Leisha"}, {$set:{"last_name":"patil"})
+...
+...
+>
+> db.user({"first_name":"Leisha"},{$set:{"last_name":"patil"}})
+uncaught exception: TypeError: db.user is not a function :
+@(shell):1:1
+>  db.user.update({"first_name":"Leisha"},{$set:{"last_name":"patil"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.user.updateMany({"gender":"Male"},{$set:{"gender":"men"}})
+{ "acknowledged" : true, "matchedCount" : 14, "modifiedCount" : 14 }
+> db.user.find({gender:"men"})
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b11"), "first_name" : "Andromache", "last_name" : "McMillam", "email" : "amcmillam0@home.pl", "gender" : "men", "ip_address" : "62.111.181.121", "age" : "4519627966" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b12"), "first_name" : "Charil", "last_name" : "Elford", "email" : "celford1@addthis.com", "gender" : "men", "ip_address" : "192.112.229.113", "age" : "1922387665" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b14"), "first_name" : "Heda", "last_name" : "Grace", "email" : "hgrace3@chron.com", "gender" : "men", "ip_address" : "223.243.193.150", "age" : "0767405757" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b19"), "first_name" : "Alex", "last_name" : "Ebdin", "email" : "aebdin8@sohu.com", "gender" : "men", "ip_address" : "216.93.3.184", "age" : "4847461762" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b1a"), "first_name" : "Yoshiko", "last_name" : "Eastman", "email" : "yeastman9@cbsnews.com", "gender" : "men", "ip_address" : "184.127.172.26", "age" : "6650190101" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b1b"), "first_name" : "Wylma", "last_name" : "Bickerstaffe", "email" : "wbickerstaffea@altervista.org", "gender" : "men", "ip_address" : "150.197.5.99", "age" : "2346748870" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b20"), "first_name" : "Esdras", "last_name" : "Josling", "email" : "ejoslingf@biblegateway.com", "gender" : "men", "ip_address" : "43.170.171.150", "age" : "9728585454" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b27"), "first_name" : "Celene", "last_name" : "Eccleston", "email" : "cecclestonm@discuz.net", "gender" : "men", "ip_address" : "61.206.39.202", "age" : "6512406176" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b2b"), "first_name" : "Loreen", "last_name" : "Paley", "email" : "lpaleyq@redcross.org", "gender" : "men", "ip_address" : "230.197.172.40", "age" : "2570465461" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b2c"), "first_name" : "Mozes", "last_name" : "Durno", "email" : "mdurnor@google.com", "gender" : "men", "ip_address" : "170.163.95.122", "age" : "5870848121" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b2d"), "first_name" : "Clementina", "last_name" : "Ivanuschka", "email" : "civanuschkas@utexas.edu", "gender" : "men", "ip_address" : "113.115.209.50", "age" : "9717483221" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b34"), "first_name" : "Belia", "last_name" : "MacKaig", "email" : "bmackaigz@networksolutions.com", "gender" : "men", "ip_address" : "111.39.253.65", "age" : "2056259419" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b37"), "first_name" : "Nickey", "last_name" : "Dodridge", "email" : "ndodridge12@deviantart.com", "gender" : "men", "ip_address" : "18.190.64.133", "age" : "8993167931" }
+{ "_id" : ObjectId("619bdf0f3e2585f4288b5b42"), "first_name" : "Leisha", "last_name" : "patil", "email" : "lbentje1d@goo.gl", "gender" : "men", "ip_address" : "242.26.54.116", "age" : "9082899760" }
+> db.user.remove({"first_name":"Leisha"})
+WriteResult({ "nRemoved" : 1 })
+> db.user,deleteOne({gender:"men"})
+uncaught exception: ReferenceError: deleteOne is not defined :
+@(shell):1:9
+>  db.user.deleteOne({gender:"men"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+>  db.user.deletManye({gender:"men"})
+uncaught exception: TypeError: db.user.deletManye is not a function :
+@(shell):1:1
+>  db.user.deletMany({gender:"men"})
+uncaught exception: TypeError: db.user.deletMany is not a function :
+@(shell):1:1
+>  db.user.deleteMany({gender:"men"})
+{ "acknowledged" : true, "deletedCount" : 12 }
+> db.user.help()
+DBCollection help
+        db.user.find().help() - show DBCursor help
+        db.user.bulkWrite( operations, <optional params> ) - bulk execute write operations, optional parameters are: w, wtimeout, j
+        db.user.count( query = {}, <optional params> ) - count the number of documents that matches the query, optional parameters are: limit, skip, hint, maxTimeMS
+        db.user.countDocuments( query = {}, <optional params> ) - count the number of documents that matches the query, optional parameters are: limit, skip, hint, maxTimeMS
+        db.user.estimatedDocumentCount( <optional params> ) - estimate the document count using collection metadata, optional parameters are: maxTimeMS
+        db.user.convertToCapped(maxBytes) - calls {convertToCapped:'user', size:maxBytes}} command
+        db.user.createIndex(keypattern[,options])
+        db.user.createIndexes([keypatterns], <options>)
+        db.user.dataSize()
+        db.user.deleteOne( filter, <optional params> ) - delete first matching document, optional parameters are: w, wtimeout, j
+        db.user.deleteMany( filter, <optional params> ) - delete all matching documents, optional parameters are: w, wtimeout, j
+        db.user.distinct( key, query, <optional params> ) - e.g. db.user.distinct( 'x' ), optional parameters are: maxTimeMS
+        db.user.drop() drop the collection
+        db.user.dropIndex(index) - e.g. db.user.dropIndex( "indexName" ) or db.user.dropIndex( { "indexKey" : 1 } )
+        db.user.hideIndex(index) - e.g. db.user.hideIndex( "indexName" ) or db.user.hideIndex( { "indexKey" : 1 } )
+        db.user.unhideIndex(index) - e.g. db.user.unhideIndex( "indexName" ) or db.user.unhideIndex( { "indexKey" : 1 } )
+        db.user.dropIndexes()
+        db.user.explain().help() - show explain help
+        db.user.reIndex()
+        db.user.find([query],[fields]) - query is an optional query filter. fields is optional set of fields to return.
+                                                      e.g. db.user.find( {x:77} , {name:1, x:1} )
+        db.user.find(...).count()
+        db.user.find(...).limit(n)
+        db.user.find(...).skip(n)
+        db.user.find(...).sort(...)
+        db.user.findOne([query], [fields], [options], [readConcern])
+        db.user.findOneAndDelete( filter, <optional params> ) - delete first matching document, optional parameters are: projection, sort, maxTimeMS
+        db.user.findOneAndReplace( filter, replacement, <optional params> ) - replace first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
+        db.user.findOneAndUpdate( filter, <update object or pipeline>, <optional params> ) - update first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
+        db.user.getDB() get DB object associated with collection
+        db.user.getPlanCache() get query plan cache associated with collection
+        db.user.getIndexes()
+        db.user.insert(obj)
+        db.user.insertOne( obj, <optional params> ) - insert a document, optional parameters are: w, wtimeout, j
+        db.user.insertMany( [objects], <optional params> ) - insert multiple documents, optional parameters are: w, wtimeout, j
+        db.user.mapReduce( mapFunction , reduceFunction , <optional params> )
+        db.user.aggregate( [pipeline], <optional params> ) - performs an aggregation on a collection; returns a cursor
+        db.user.remove(query)
+        db.user.replaceOne( filter, replacement, <optional params> ) - replace the first matching document, optional parameters are: upsert, w, wtimeout, j
+        db.user.renameCollection( newName , <dropTarget> ) renames the collection.
+        db.user.runCommand( name , <options> ) runs a db command with the given name where the first param is the collection name
+        db.user.save(obj)
+        db.user.stats({scale: N, indexDetails: true/false, indexDetailsKey: <index key>, indexDetailsName: <index name>})
+        db.user.storageSize() - includes free space allocated to this collection
+        db.user.totalIndexSize() - size in bytes of all the indexes
+        db.user.totalSize() - storage allocated for all data and indexes
+        db.user.update( query, <update object or pipeline>[, upsert_bool, multi_bool] ) - instead of two flags, you can pass an object with fields: upsert, multi, hint, let
+        db.user.updateOne( filter, <update object or pipeline>, <optional params> ) - update the first matching document, optional parameters are: upsert, w, wtimeout, j, hint, let
+        db.user.updateMany( filter, <update object or pipeline>, <optional params> ) - update all matching documents, optional parameters are: upsert, w, wtimeout, j, hint, let
+        db.user.validate( <full> ) - SLOW
+        db.user.getShardVersion() - only for use with sharding
+        db.user.getShardDistribution() - prints statistics about data distribution in the cluster
+        db.user.getSplitKeysForChunks( <maxChunkSize> ) - calculates split points over all chunks and returns splitter function
+        db.user.getWriteConcern() - returns the write concern used for any operations on this collection, inherited from server/db if set
+        db.user.setWriteConcern( <write concern doc> ) - sets the write concern for writes to the collection
+        db.user.unsetWriteConcern( <write concern doc> ) - unsets the write concern for writes to the collection
+        db.user.latencyStats() - display operation latency histograms for this collection
+> db.user.drop()
+true
+> ^C
+bye
+
+C:\Users\parag>
